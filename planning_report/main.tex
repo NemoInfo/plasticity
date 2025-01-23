@@ -1,0 +1,114 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\input{header}
+\begin{document}
+
+
+\begin{titlepage}
+	\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+	\setlength{\topmargin}{0in}
+	\center
+
+	\begin{flushleft} \large
+		\begin{minipage}{0.4\textwidth}
+			\includegraphics[scale=0.14]{imperial.png}
+		\end{minipage}
+	\end{flushleft}
+	\vspace{4cm}
+
+	%----------------------------------------------------------------------------------------
+	%	TITLE SECTION
+	%----------------------------------------------------------------------------------------
+	\textbf{\large Literature review and thesis proposal}\\[0.1cm]
+	{\large MRes. Neurotechonlogy}\\[0.5cm]
+
+	\HRule \\[0.4cm]
+	{\Large \bfseries Investigating plasticity in Cortico-Basal Ganglia-Thalamus models for improving stimulation-based treatments }
+	\HRule \\[1cm]
+
+	%----------------------------------------------------------------------------------------
+	%	AUTHOR SECTION
+	%----------------------------------------------------------------------------------------
+
+	{\large Aaron Panaitescu \\
+	(\textit{CID:} 02054726) \\[0.4cm]
+	\textbf{Supervisor:} \\
+	Hayriye Cagnan}
+
+	%----------------------------------------------------------------------------------------
+	%	DATE SECTION
+	%----------------------------------------------------------------------------------------
+
+	\vfill
+	{\large \today}\\[0.8cm]
+\end{titlepage}
+%**********************************************%
+\tableofcontents
+\newpage
+
+\section{Introduction / Abstract?}
+**Stylistically, I would prefere to do an abstract here and breakdown the concepts in the following section**
+\section{Background and literature review}
+**start this off nicely with a diagram of the research gap**
+
+\subsection{Parkinson's Disease}
+\textit{Outline}
+
+** 1. Loss of SNc dopaminergic neurons.**
+
+** would be nice if this had a diagram**
+** 2. Strengthening of indirect GPe $\rightarrow$ STN pathway, \\
+weakening of hyperdirect Cortex $\rightarrow$ STN pathway.
+(?dimmer switch model \cite{helmich2012cerebral}, \cite{west2022stimulating})**
+
+** 3. Hypersynchrony in the Basal Ganglia.**
+
+\subsection{DBS: theory and practice}
+**DBS as the state of the art in treatment**
+
+**Limitations of DBS (invasiveness, side effects, it needs to be on permenently,
+why 130Hz? when tremors are $\sim$ 20Hz)**
+
+$\Rightarrow$ plenty of things to be improved
+
+\subsection{Stimulating at the right time?}
+**important** \cite{cagnan2017stimulating} \cite{west2022stimulating}
+
+\subsection{Plasticity to recover network states}
+**here I need to checkout some literature, ??how have I not done this already yet??**
+
+\subsection{Mean-field vs. Single Neuron models}
+**briefly, in general and expand in the context of plasticity**
+
+**important** \cite{duchet2023mean} \cite{shupe2021integrate} \cite{schwab2020spike}
+
+\subsection{**Other ways of improving stimulation-based treatments**}
+**stimulation parameter optimizations, closing the loop (e.g. aDBS \cite{beudel2018adaptive})**
+
+\section{Project Plan}
+
+\paragraph{Aims} \begin{enumerate}
+	\item Model neuroplasticity in a Parkinsonian CGBT network
+	\item Investigate the viabillity of harnessing plasticity to remove the
+	      system from the pathological state and analyze the dynamics that follow
+
+	      **here i care about things like for how long, how does the network change.**
+	\item Try to link potential results to potential stimulation protocols?
+\end{enumerate}
+
+\paragraph{Methodolgy} **How indeed?** HH/IF Pakrkinsoni model + plasticity rules, trying
+different stimulation-based protocols (link with experimental data?)
+
+\subsection{Timeline}
+**Gant chart thingy**
+
+
+%**********************************************%
+\newpage
+\addcontentsline{toc}{section}{References}
+\bibliography{refs}
+\bibliographystyle{apalike}
+\newpage
+
+\end{document}
