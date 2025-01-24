@@ -2,9 +2,13 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 \input{header}
+
+
+% \makeglossaries
+% \newcommand{\ac}[1]{\pdftooltip{\gls*{#1}}{\glsentrylong{#1}}}
+% \newacronym{abc}{ABC}{A B and C}
+
 \begin{document}
-
-
 \begin{titlepage}
 	\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 	\setlength{\topmargin}{0in}
@@ -24,7 +28,7 @@
 	{\large MRes. Neurotechonlogy}\\[0.5cm]
 
 	\HRule \\[0.4cm]
-	{\Large \bfseries Investigating plasticity in Cortico-Basal Ganglia-Thalamus models for improving stimulation-based treatments }
+	{\Large \bfseries Investigating plasticity in \\ Cortico-Basal Ganglia-Thalamus models \\ to improve stimulation-based treatments }
 	\HRule \\[1cm]
 
 	%----------------------------------------------------------------------------------------
@@ -44,7 +48,9 @@
 	{Word Count: ????}\\[0.4cm]
 	{\large \today}\\[0.8cm]
 \end{titlepage}
-%**********************************************%
+%----------------------------------------------------------------------------------------
+%	REPORT CONTENT
+%----------------------------------------------------------------------------------------
 \tableofcontents
 \newpage
 
@@ -54,7 +60,7 @@
 **start this off nicely with a diagram of the research gap**
 
 \subsection{Parkinson's Disease}
-\textit{Outline}
+\textit{Outline} \cite{del2018advances}
 
 ** 1. Loss of SNc dopaminergic neurons.**
 
@@ -67,14 +73,19 @@ hyperdirect Cortex $\rightarrow$ STN pathway $\downarrow$.
 ** 3. Hypersynchrony in the Basal Ganglia.**
 
 \subsection{DBS: theory and practice}
-**DBS as the state of the art in treatment**
+**DBS as the state of the art in treatment.**
 
 **Limitations of DBS (invasiveness, side effects, it needs to be on permenently,
 why 130Hz? when tremors are $\sim$ 20Hz)**
 
+$\Rightarrow$ plenty of things to be improved
+
 **citations needed**
 
-$\Rightarrow$ plenty of things to be improved
+**also should probably add a bit on other types of stimulation**
+
+(e.g. tACS \cite{saturnino2017target} \cite{schwab2020spike} \cite{schwab2019modulation})
+
 
 \subsection{Stimulating at the right time?}
 **important** \cite{cagnan2017stimulating} \cite{beudel2018adaptive} \cite{west2022stimulating}
@@ -87,13 +98,17 @@ $\Rightarrow$ plenty of things to be improved
 
 **cover** \cite{jansen1995electroencephalogram} (\cite{hodgkin1952measurement} does this really need to be cited?)
 
-**important** \cite{duchet2023mean} \cite{shupe2021integrate} \cite{schwab2020spike}
+**important** \cite{terman2002activity} \cite{rubin2012basal} \cite{duchet2023mean} \\
+\cite{shupe2021integrate} \cite{schwab2020spike}
 
 \subsection{**Other ways of improving stimulation-based treatments**}
 **stimulation parameter optimizations, closing the loop (e.g. aDBS \cite{beudel2018adaptive})**
 \textit{
 	Maybe this can be folded into the stimulating at the right time part
-	since they are pretty closely related
+	since they are pretty closely related. Also should mention the idea that
+	these methods are not mutually exclusive, meaning that in principle they
+	could be combined, adaptive stim closing the loop, with inducing plastic
+	changes as target
 }
 
 \section{Project Plan}
@@ -108,24 +123,34 @@ $\Rightarrow$ plenty of things to be improved
 	      **here i care about things like for how long and how does the network change.
 	      To what degree can we induce changes etc.**
 
-        **should look into viable timescales for simulation**
+	      **should look into viable timescales + noise analyze how long does it take to rebound to
+	      pathological state**
 	\item Try to link potential results to potential stimulation protocols?
 \end{enumerate}
 
 \subsection{Methodolgy} **How indeed?** HH/IF Pakrkinsoni model + plasticity rules, trying
 different stimulation-based protocols (link with experimental data?)
 
+**look into how to tune IF model parameters from experimental data**
+
 \subsection{Timeline}
 **Gant chart thingy**
 
 
+
 %**********************************************%
 \newpage
+%----------------------------------------------------------------------------------------
+%	REFERENCES
+%----------------------------------------------------------------------------------------
 \addcontentsline{toc}{section}{References}
 \bibliography{refs}
 \bibliographystyle{apalike}
 \newpage
 
+%----------------------------------------------------------------------------------------
+%	APPENDIX  
+%----------------------------------------------------------------------------------------
 \appendix
 \section*{Appendices}
 \addcontentsline{toc}{section}{Appendices}
