@@ -41,6 +41,7 @@
 	%----------------------------------------------------------------------------------------
 
 	\vfill
+	{Word Count: ????}\\[0.4cm]
 	{\large \today}\\[0.8cm]
 \end{titlepage}
 %**********************************************%
@@ -57,10 +58,11 @@
 
 ** 1. Loss of SNc dopaminergic neurons.**
 
-** would be nice if this had a diagram**
-** 2. Strengthening of indirect GPe $\rightarrow$ STN pathway, \\
-weakening of hyperdirect Cortex $\rightarrow$ STN pathway.
-(?dimmer switch model \cite{helmich2012cerebral}, \cite{west2022stimulating})**
+** 2. indirect GPe $\rightarrow$ STN pathway $\uparrow$,
+hyperdirect Cortex $\rightarrow$ STN pathway $\downarrow$.
+(dimmer switch model \cite{helmich2012cerebral}, \cite{west2022stimulating})**
+
+** \textbf{add diagram} **
 
 ** 3. Hypersynchrony in the Basal Ganglia.**
 
@@ -70,34 +72,47 @@ weakening of hyperdirect Cortex $\rightarrow$ STN pathway.
 **Limitations of DBS (invasiveness, side effects, it needs to be on permenently,
 why 130Hz? when tremors are $\sim$ 20Hz)**
 
+**citations needed**
+
 $\Rightarrow$ plenty of things to be improved
 
 \subsection{Stimulating at the right time?}
-**important** \cite{cagnan2017stimulating} \cite{west2022stimulating}
+**important** \cite{cagnan2017stimulating} \cite{beudel2018adaptive} \cite{west2022stimulating}
 
 \subsection{Plasticity to recover network states}
-**here I need to checkout some literature, ??how have I not done this already yet??**
+**mention** \cite{lebedev2017brain} \cite{cramer2011harnessing}
 
-\subsection{Mean-field vs. Single Neuron models}
+\subsection{Neuron-level vs. Mean-field models}
 **briefly, in general and expand in the context of plasticity**
+
+**cover** \cite{jansen1995electroencephalogram} (\cite{hodgkin1952measurement} does this really need to be cited?)
 
 **important** \cite{duchet2023mean} \cite{shupe2021integrate} \cite{schwab2020spike}
 
 \subsection{**Other ways of improving stimulation-based treatments**}
 **stimulation parameter optimizations, closing the loop (e.g. aDBS \cite{beudel2018adaptive})**
+\textit{
+	Maybe this can be folded into the stimulating at the right time part
+	since they are pretty closely related
+}
 
 \section{Project Plan}
 
-\paragraph{Aims} \begin{enumerate}
+
+\subsection{Aims}
+\begin{enumerate}
 	\item Model neuroplasticity in a Parkinsonian CGBT network
 	\item Investigate the viabillity of harnessing plasticity to remove the
 	      system from the pathological state and analyze the dynamics that follow
 
-	      **here i care about things like for how long, how does the network change.**
+	      **here i care about things like for how long and how does the network change.
+	      To what degree can we induce changes etc.**
+
+        **should look into viable timescales for simulation**
 	\item Try to link potential results to potential stimulation protocols?
 \end{enumerate}
 
-\paragraph{Methodolgy} **How indeed?** HH/IF Pakrkinsoni model + plasticity rules, trying
+\subsection{Methodolgy} **How indeed?** HH/IF Pakrkinsoni model + plasticity rules, trying
 different stimulation-based protocols (link with experimental data?)
 
 \subsection{Timeline}
@@ -110,5 +125,12 @@ different stimulation-based protocols (link with experimental data?)
 \bibliography{refs}
 \bibliographystyle{apalike}
 \newpage
+
+\appendix
+\section*{Appendices}
+\addcontentsline{toc}{section}{Appendices}
+\renewcommand{\thesubsection}{\Alph{subsection}}
+\subsection{First appendix}
+\subsection{Second appendix}
 
 \end{document}
