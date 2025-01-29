@@ -36,7 +36,7 @@
 	{\large Aaron Panaitescu \\
 	(\textit{CID:} 02054726) \\[0.4cm]
 	\textbf{Supervisor:} \\
-	Hayriye Cagnan}
+	Dr. Hayriye Cagnan}
 
 	%----------------------------------------------------------------------------------------
 	%	DATE SECTION
@@ -63,33 +63,35 @@ Parkinson's Disease (PD) is characterized by the loss of dopaminergic neurons an
 \emph{Lewy Bodies} (LB) in the \emph{Substantia Nigra pars Compacta} (SNc)
 \cite{del2018advances}. This dopaminergic depletion in the SNc leads to striatal dopamine
 deficiency, which in turn leads to excessive synchronization in the basal ganglia.
-Hyper-synchrony is a hallmark of the PD \cite{hammond2007pathological, helmich2012cerebral}, 
+Hyper-synchrony is a hallmark of the PD \cite{hammond2007pathological, helmich2012cerebral},
 and thus, can be a promising therapeutic target.
 
 \subsection{Deep brain stimulation: theory and practice}
-Tremor is primarly generated in the Cortical-Basal Ganglia-Thalamic (CBGT) network. Thus, deep
-brain stimulation (DBS) emerged as an effective tool in the treatment of advanced PD patients
-\cite{del2018advances}. DBS work through the implantation of electrodes in particular regions
-of the brain. The idea is that this sort of stimulation can be used to decorelate regios of the
-basal ganglia and to push the network to a non-pathological state. There is significant evidence
-that performing DBS in the STN or the GPi, can have major quality of life improvements in
-PD patients, reducing tremor and restoring motor control \cite{rodriguez2005bilateral}. While
-effective, DBS has its limitations.
+Tremor is primarly generated in the Cortical-Basal Ganglia-Thalamic (CBGT) network.
+Thus, deep brain stimulation (DBS) in this region emerged as an effective tool in
+the treatment of advanced PD patients \cite{del2018advances}.
+DBS works through the implantation of electrodes in particular regions
+of the brain.
+The intuition behind this method is that it enables stimulation driven decorelatation of the
+different basal ganglia nuclei, pushing it to a non-pathological state.
+There is significant evidence that performing DBS in the STN or the GPi, can have major quality
+of life improvements in PD patients, reducing tremor and restoring motor control
+\cite{rodriguez2005bilateral}.
+DBS does, however have significant limitations.
 
-Firstly, it is an highly-invasive procedure, and so it has many risks, though advances in
-electrode technology and surgical techniques have reduced some of these risks.
+Firstly, like any highly-invasive procedure, the implatation procedure has many risks.
+Advances in electrode technology and surgical techniques have reduced some of these risks.
+*cite*
 
-Secondly, the stimulation needs to be on at all times; if it is turned off, patient simptoms
-return.
+Secondly, patient symptoms are only ameloriated while the stimulation is on. This means that
+the device needs to be on continously, which can induce numerous side effects in patients
+**citeee** and also creates the need for a continous power supply.
 
-Additionaly, the mechanism through which DBS removes tremors is not fully understood yet, there
-are many wuestions left to answer. For example, why does DBS in PD get effective results around
-130 Hz, when tremor frequency is on average around 20 Hz.
+Finally, the mechanism through which DBS reduces tremors is not fully understood yet, there
+are many questions left to answer. For instance, why does DBS in PD get effective results around
+130 Hz, when tremor frequency is on average around 20 Hz **check this**.
 
-Finally, stimulating regions of the brain continously and at such high frequencies leads to
-numerous side effects **citation desperatly needed**.
-
-Therfore several areas of research emerge in improving stimulation-based treatments of PD:
+Therfore, several areas of research emerge in improving stimulation-based treatments of PD:
 finding non-invasive alternatives \cite{saturnino2017target, schwab2020spike}, eleciting lasting,
 plastic changes in CBGT circuit, closing the loop and coupling stimulation to the presence of
 patient symptoms \cite{beudel2018adaptive}, and improving stimulation patterns to harness the
@@ -100,7 +102,7 @@ The Parkinsonian state is modulated by the interplay between four pathways in th
 the \textbf{hyperdirect} excitatory cortico-subthalamic pathway,
 the \textbf{direct} inhibitory striato-pallidal pathway,
 the \textbf{indirect} inhibitory subthalamic-pallido pathway and
-the inhibitory \textbf{pallido-subthalamic} pathway. In the Parkinsonian state the hyperdirect
+the inhibitory \textbf{pallido-subthalamic} (PS) pathway. In the Parkinsonian state the hyperdirect
 pathway is downregulated, while pallido-subthalamic pathway is upregulated, leading to a shift in
 beta band oscillatory activity from sub-band $\beta_1$ to sub-band $\beta_2$, which corellates to
 hyper-synchrony in the basal ganglia \cite{west2022stimulating}.
@@ -109,15 +111,110 @@ hyper-synchrony in the basal ganglia \cite{west2022stimulating}.
 **important** \cite{cagnan2017stimulating} \cite{beudel2018adaptive} \cite{west2022stimulating}
 
 \subsection{Plasticity to recover network states}
-**mention** \cite{lebedev2017brain} \cite{cramer2011harnessing}
+Neuroplasticity can be defined as "the ability of the nervous system to change its activity in
+response to intrinsic or extrinsic stimuli by reorganizing its structure, functions, or
+connections" \cite{mateos2019impact}.
+Plasticity occurs at different scales in the brain, ranging from molecular to neural networks.
+The focus of this project is synaptic plasticity, which occurs between a pre-synaptic and a
+pos-synaptic neuron. While, the mechanisms of plasticity have been throughly studied **cite**,
+this understanding is just starting to find its way into clinical applications in
+neurorehabilitation (e.g. stroke, trauma, spinal cord injury \cite{cramer2011harnessing}) and
+neuroprostheses \cite{lebedev2017brain}.
+
+**this should be relevant as well** \cite{schwab2020spike} \\
+**at this point i should introduce STDP**
 
 \subsection{Neuron-level vs. Mean-field models}
-**briefly, in general and expand in the context of plasticity**
+Neuronal dynamics models are defined by defined by rules (ODEs) of how voltage in an unit changes
+over time in response to voltage in the network and external current (e.g. noise, stimulation
+current).
+The question then becomes what is an unit? There are two broad categories branching out of this
+question: An unit can be an individual neuron or a cluster of neurons. This section introduces
+some common types of models, justifying the direction chosen for this project.
 
-**cover** \cite{jansen1995electroencephalogram} (\cite{hodgkin1952measurement} does this really need to be cited?)
+\paragraph{Neuron models} (or spiking models) work by combining networks of units that individually
+simulate neuronal action potentials (APs).
+These networks can then be organized into different nuclei (e.g. STN) and coherced to respect
+excitatory or inhibitory connections between nuclei.
+Within this class of models, different schemes for modeling neuronal dynamics exist,
+such as Integrate-And-Fire (IF) \cite{gerstner2014if} and Hodgkin-Huxley
+\cite{hodgkin1952measurement, gerstner2014hh}.
 
-**important** \cite{terman2002activity} \cite{rubin2004high} \cite{rubin2012basal} \\
-\cite{duchet2023mean} \cite{shupe2021integrate} \cite{schwab2020spike}
+\paragraph{Mean-field models} simulate the local field potentials (LFPs) of clusters of neurons
+and connect these clusters with population-level connectivity rules. (e.g.
+\cite{jansen1995electroencephalogram})
+
+% Neuron-level
+\subsubsection{Integrate-And-Fire}
+IF models treat action potentials as events.
+This reduction is justified by the fact that the shape of APs is always \textit{approximately}
+the same, meaning they \textit{cannot} convey information. \cite{gerstner2014if} describe a leaky IF model
+is represented by an electrical circuit with a resistor($R$) and a capacitor($C$) in parallel
+($I(t) = I_R + I_C$), combined with a reset condition when the potential exceeds threshold
+$\theta$.
+This can be modeled by,
+\begin{align}
+	\tau_m \dot u                                           & = -[u(t) - u_{rest}] + RI(t),                                    \\
+	\intertext{Together with the reset condition,}
+	\lim_{\delta \rightarrow 0; \delta > 0} u(t^f + \delta) & = u_r,                                                           \\
+	t^f                                                     & = \{t | u(t)                                        = \theta \}.
+\end{align}
+Where $u$ is the membrane voltage, $u_{rest}$ is the resting potential, $u_r$ is the reset
+potential, $\tau_m = RC$ is the time constant, and $I$ is external current.
+
+These equations describe the update rules in a single unit. Connectivity rules between units
+can be added to form neural networks. These connections can then be strengthend or weakend
+depending on spike timings between units, modeling STDP. \cite{shupe2021integrate} simulate
+plasticity in cortical columns; \cite{kromer2023synaptic} model plasticity between basal ganglia
+nuclei both using a IF model.
+
+\subsubsection{Hodgkin-Huxley}
+The Hodgkin-Huxley (HH) model \cite{hodgkin1952measurement} simulates membrane potential by
+considering the dynamics of different ion conductances.
+Each ion has a reversal potential at which the force of the electrical and chemical gradients
+across the membrane even out.
+These can be modeled in an electrical circuit as a battery and the total channels of a
+particular ion can be modeled as a resistor. Each modelled ion has a parallel branch in the
+corresponding electrical circuit. The following equations adapted from \cite{gerstner2014hh}
+describe the HH model:
+\begin{align}
+	I(t) & = I_C(t) + \sum_k I_k(t),
+	\intertext{Where the current of each ion $k$ can be described in terms of the open probability
+		of a $k$ channel, $p_k$ and the maximum conductance when all $k$ channels are open, $g_k$:}
+	I_k  & = g_k p_k(u - E_k).
+\end{align}
+In particular Hodgkin and Huxley modeled $Na^+$, $K^+$ and a leak $L$ currents:
+\begin{align}
+	C \dot u = g_{Na}m^3h(E_{Na} - u) + g_K n^4(E_K - u) + g_L (E_L - u),
+\end{align}
+Where $m$, $h$ and $n$ are open probabilities for subunints of $Na$ or $K$ channels governed by:
+\begin{align}
+	\dot x = - \frac 1 {\tau_m(u)}[x - x_0(u)], &  & x \in \{m, h, n\}.
+\end{align}
+As in the IF model these rules describe the dynamics of a single unit, which can subsequently
+be connected to model a networks of neurons (e.g. \cite{terman2002activity}) and augumented to
+include plasticity rules \cite{borges2016effects}.
+
+\subsubsection{Rubin-Terman}
+\cite{terman2002activity} expanded on the HH model to create a subthalamopallido network of the
+basal ganglia, where GPe and STN neurons are modeled according following equation,
+\begin{align}
+	C \dot u = - I_L - I_K - I_{Na} - I_T - I_{Ca} - I_{AHP} - I_{pre \rightarrow post}
+\end{align}
+Where leak, $K^+$, $Na^+$ and high-threshold $Ca^+$ current \cite{song2000characterization}, are
+described in HH-like equations, and low threshold calcium current $I_T$ is different for GPe and
+STN neurons. $I_{AHP}$ represents calcium activated, voltage independent afterhyperpolarization
+(AHP) $K^+$ current. $I_{pre \rightarrow post}$ is synaptic current dependent on the nuclei
+the pre and post neurons belong to (either GPe or STN).
+
+**BG** \cite{terman2002activity, rubin2004high, rubin2012basal} \\
+**plasticity** \cite{madadi2022inhibitory}
+
+% Population
+\subsubsection{Jansen}
+**plasticity** \cite{duchet2023mean} \\
+\cite{jansen1995electroencephalogram} \cite{west2022stimulating}
+
 
 \subsection{**Other ways of improving stimulation-based treatments**}
 **stimulation parameter optimizations, closing the loop (e.g. aDBS \cite{beudel2018adaptive})**
