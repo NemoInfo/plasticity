@@ -57,9 +57,28 @@
 \tableofcontents
 \newpage
 
-\section{Introduction / Abstract?}
-**Stylistically, I would prefere to do an abstract here and breakdown the concepts in the
-following section**
+\section{Introduction}
+Parkinson's disease (PD) is characterized by pathological hypersynchrony in Cortico-basal Ganglia-Thalamic
+(CBGT) circuit, driven by dopaminergic degeneration in the Substantia Nigra pars Compacta (SNc). While deep
+brain stimulation (DBS) alleviates symptoms by disrupting synchrony, its mechanisms remain not well understood,
+and therapeutic effects are transient, necessitating continuous stimulation. This goal of this study is to propose
+a computational framework to investigate multi-site phase-locked stimulation in a spiking CBGT network model with
+spike-timing-dependent plasticity (STDP) rules, aiming to induce lasting desynchronization through activity-dependent
+synaptic reorganization.
+
+Methodologically, pathological and healthy network regimes will be established through data-driven tuning of spiking neuron models.
+Systematic simulations then evaluate multi-site phase-locked stimulation across four experimental axes:
+(1) STDP enabled/disabled in corticostriatal populations,
+(2) stimulation applied to different pairs of basal ganglia nuclei and cortical afferents,
+(3) closed-loop adaptation to thalamic oscillatory activity, and
+Network responses are quantified via phase-amplitude coupling, spectral power, and metastability analysis.
+
+This work advances the field in two key directions:
+(1) integrates phase-locked stimulation with plasticity-targeted protocols, and
+(2) evaluates stimulation targets across the CBGT circuit focusing on regions with experimentally validated STDP.
+Results will inform clinical adaptive stimulation protocols that exploit neuroplasticity for lasting symptom relief,
+while the methodology provides a generalizable computational framework for closed-loop neuromodulation design.
+
 \section{Background and literature review}
 **start this off nicely with a diagram of the research gap**
 
@@ -75,13 +94,13 @@ and thus, can be a promising therapeutic target.
 Tremor is primarly generated in the Cortical-Basal Ganglia-Thalamic (CBGT) network.
 Thus, deep brain stimulation (DBS) in this region emerged as an effective tool in
 the treatment of advanced PD patients \cite{del2018advances}.
-DBS works through the implantation of electrodes in particular regions
-of the brain.
-The intuition behind this method is that it enables stimulation driven decorelatation of the
-different basal ganglia nuclei, pushing it to a non-pathological state.
+DBS in PD works through delivering high-frequency stimulation in regions of the CBGT
+through implanted electrodes.
+A prominent theory for this method's success is that it enables stimulation driven
+decorelatation of the different BG nuclei, pushing it to a non-pathological state.
 There is significant evidence that performing DBS in the STN or the GPi, can have major quality
 of life improvements in PD patients, reducing tremor and restoring motor control
-\cite{rodriguez2005bilateral}.
+\cite{rodriguez2005bilateral, rubin2004high}.
 DBS does, however have significant limitations.
 
 Firstly, like any highly-invasive procedure, the implatation procedure has many risks.
@@ -94,13 +113,13 @@ the device needs to be on continously, which can induce numerous side effects in
 
 Finally, the mechanism through which DBS reduces tremors is not fully understood yet, there
 are many questions left to answer. For instance, why does DBS in PD get effective results around
-130 Hz, when tremor frequency is on average around 20 Hz **check this**.
+130 Hz, when tremor frequency is on average around 20 Hz.
 
 Therfore, several areas of research emerge in improving stimulation-based treatments of PD:
 finding non-invasive alternatives \cite{saturnino2017target, schwab2020spike}, eleciting lasting,
 plastic changes in CBGT circuit, closing the loop and coupling stimulation to the presence of
 patient symptoms \cite{beudel2018adaptive}, and improving stimulation patterns to harness the
-exploit the rythmic patterns activity in the basal ganglia \cite{cagnan2017stimulating, west2022stimulating}.
+exploit the rythmic patterns of activity in the basal ganglia \cite{cagnan2017stimulating, west2022stimulating}.
 
 \subsection{Stimulating at the right time}
 The Parkinsonian state is modulated by the interplay between four pathways in the CBGT
@@ -111,9 +130,11 @@ the inhibitory \textbf{pallido-subthalamic} (PS) pathway. In the Parkinsonian st
 pathway is downregulated, while pallido-subthalamic pathway is upregulated, leading to a shift in
 beta band oscillatory activity from sub-band $\beta_1$ to sub-band $\beta_2$, which corellates to
 hyper-synchrony in the basal ganglia \cite{west2022stimulating}.
-** \textbf{add diagram} **
 
-**important** \cite{cagnan2017stimulating} \cite{beudel2018adaptive} \cite{west2022stimulating}
+\cite{cagnan2017stimulating} demonstrated that phase-specific neuromodulation can disrupt pathological
+synchrony in essential tremor by delivering stimulation pulses locked to thalamic oscillatory phases.
+Strategies like this and others \cite{beudel2018adaptive} show the potential for closed-loop,
+adaptive therapies to address hypersynchrony in the BG.
 
 \subsection{Plasticity to recover network states}
 Neuroplasticity can be defined as "the ability of the nervous system to change its activity in
@@ -124,14 +145,23 @@ The focus of this project is synaptic plasticity, which occurs between a pre-syn
 pos-synaptic neuron. While, the mechanisms of plasticity have been throughly studied **cite**,
 this understanding is just starting to find its way into clinical applications in
 neurorehabilitation (e.g. stroke, trauma, spinal cord injury \cite{cramer2011harnessing}) and
-neuroprostheses \cite{lebedev2017brain}. \\
-**should mention STDP above** \\
-**OMG I'm cooked how tf did I miss \cite{hauptmann2009cumulative, hauptmann2010restoration}?!** \\
-**\textbf{coordinated reset (CR) stimulation}** \\
-**this should be relevant as well** \cite{schwab2020spike} \\
+neuroprostheses \cite{lebedev2017brain}.
 
-\subsection{Neuron-level vs. Mean-field models}
-Neuronal dynamics models are defined by defined by rules (ODEs) of how voltage in an unit changes
+The potential of plasticity-based treatments in PD depends on the existance of
+spike-timing-dependent plasticity (STDP) in the synapses of the different BG nuclei, particularly
+in the STN \cite{rubin2012basal}. Long and short-term plasticity has been found in
+corticostriatal synapses \cite{kreitzer2008striatal, di2009short} as well as cell-specific STDP in
+striatal interneurons \cite{fino2010spike}.
+\cite{thieu2024role} modeled STDP and random inputs in an STN neurons and found combining the two can
+increase coupling between neurons.
+
+Coordinated reset stimulation (CRS) delivers brief, phase-targeted electrical stimuli to specific
+neuronal subpopulations within interconnected neural circuits.
+CRS has been computationally modeled in a GPe-STN network to sucessfuly disrupt pathological
+synchronization in the BG \cite{hauptmann2009cumulative, hauptmann2010restoration}.
+
+\subsection{Modeling neural networks}
+Most neuronal dynamics models are defined by defined by rules (ODEs) of how voltage in an unit changes
 over time in response to voltage in the network and external current (e.g. noise, stimulation
 current).
 The question then becomes what is an unit? There are two broad categories branching out of this
@@ -148,7 +178,7 @@ such as Integrate-And-Fire (IF) \cite{gerstner2014if} and Hodgkin-Huxley
 
 \paragraph{Mean-field models} simulate the local field potentials (LFPs) of clusters of neurons
 and connect these clusters with population-level connectivity rules. (e.g.
-\cite{jansen1995electroencephalogram})
+\cite{jansen1995electroencephalogram, west2022stimulating})
 
 % Neuron-level
 \subsubsection{Integrate-And-Fire}
@@ -222,53 +252,52 @@ delay between $d$ and $s$.
 \cite{madadi2022inhibitory} expand on this model by adding inhibitory spike-timing-dependent
 plasticity to this network with $\Delta w = \eta(\exp(-|\Delta t| / \tau_w) - \alpha)$,
 where $\eta$ is the \textit{learning rate}, $\tau_w$ is the time constant of the plasticity
-rule exponential decay and $\alpha$ is the depression factor. \cite{rubin2012basal} expand
-the RT model into a CBGT model and analyze ... \\
-**\cite{hauptmann2009cumulative, hauptmann2010restoration} $\rightarrow$ GPe-STN + plasticity +
-CR stimulation** \\
-**\cite{rubin2012basal} (on multi-site CR stimulation) \emph{"in its current formulation, does
-	depend critically on spike timing dependent plasticity inconnections among excitatory neurons
-	within the STN, the presence of which currently lacks experimental confirmation. It is possible
-	that the general theory is correct but that the site of plasticity is elsewherein the BG, an
-	idea that remains to be explored"}**
+rule exponential decay and $\alpha$ is the depression factor.
 
 % Population
-\subsubsection{Jansen}
-**this should be brief** \cite{jansen1995electroencephalogram} \cite{west2022stimulating} \\
-**phase-dependent plasticity** \cite{duchet2023mean} \\
+\subsubsection{Other modeling approaches}
+Neuronal populations can also be modeled with networks of coupled phase-oscillators as in
+\cite{tass2006long}. \cite{duchet2023mean} modeled STDP as mean-field phase-locked plasticity in a network of
+Kuramoto oscillators \cite{kuramoto1984phase}.
 
-
-\subsection{**Other ways of improving stimulation-based treatments**}
-**stimulation parameter optimizations, closing the loop (e.g. aDBS \cite{beudel2018adaptive})**
-\textit{
-	Maybe this can be folded into the stimulating at the right time part
-	since they are pretty closely related. Also should mention the idea that
-	these methods are not mutually exclusive, meaning that in principle they
-	could be combined, adaptive stim closing the loop, with inducing plastic
-	changes as target
-}
+\cite{jansen1995electroencephalogram} model cortical columns of neurons by considering the PSPs of
+excitatory and inhibitory populations in a column to replicate EEG recorded alpha and beta activity.
+\cite{west2022stimulating} used these building blocks in full CBGT model to study effects on
+phase-dependent stimulation on coupling.
 
 \section{Project Plan}
-
-
-\subsection{Aims}
-\begin{enumerate}
-	\item Model neuroplasticity in a Parkinsonian CGBT network
-	\item Investigate the viabillity of harnessing plasticity to remove the
-	      system from the pathological state and analyze the dynamics that follow
-
-	      **here i care about things like for how long and how does the network change.
-	      To what degree can we induce changes etc.**
-
-	      **should look into viable timescales + noise analyze how long does it take to rebound to
-	      pathological state**
-	\item Try to link potential results to potential stimulation protocols?
+The primary objective of this project is to investigate multi-site phase-locked stimulation in a spiking CBGT network
+model, with the goal of inducing plastic changes that transition pathological network dynamics of the BG toward
+a healthy desynchronized state. This work will address two important gaps in the current literature:
+\begin{enumerate}[nosep]
+	\item Integrating phase-locked stimulation with plasticity-targeted protocols, closing the loop in coordinated
+	      reset paradigms.
+	\item Systematically evaluating stimulation targets across the wider CBGT network, with emphasis on regions with
+	      experimentally validated synaptic plasticity (e.g., corticostriatal connections) while accounting for
+	      uncertainties in plasticity mechanisms at other nodes like the STN.
 \end{enumerate}
+The selection of a spiking network with STDP rules over phase-oscillator models with phase-dependent plasticity is
+motivated by the following methodological consideration:
+Simulating phase-locked stimulation within systems governed by \textit{a priori} phase-triggered plasticity introduces
+inherent circularity.
+Such coupling risks conflating stimulation mechanisms with network adaptation rules, effectively predetermining
+intervention outcomes without much dependence on the physiological constraints.
+In contrast, spiking networks with STDP decouple the synchronization mechanism from the phase-locked stimulation
+preserving causal distinction between stimulation protocols and plasticity-driven reorganization.
 
-\subsection{Methodolgy} **How indeed?** HH/IF Pakrkinsoni model + plasticity rules, trying
-different stimulation-based protocols (link with experimental data?)
-
-**look into how to tune IF model parameters from experimental data**
+\subsection{Methodology}
+To achieve these objectives, the following steps will be implemented:
+\begin{enumerate}[nosep]
+	\item Implement STDP mechanisms within a spiking CBGT network model.
+	\item Tune pathological and healthy dynamical modes through data-driven parameter tuning, initially with plasticity disabled.
+	\item Conduct systematic simulations of multi-site phase-locked stimulation under four experimental conditions:
+	      \begin{itemize}[nosep]
+		      \item STDP enabled/disabled in specific network nodes
+		      \item Multi-site phase-locked stimulation applied to distinct BG nuclei and cortical afferents
+	      \end{itemize}
+	      Quantify network responses by analysing inter-nuclei coupling, and transitions between dynamical states.
+	\item Derive stimulation protocols optimized for plasticity-driven network desynchronisation.
+\end{enumerate}
 
 \subsection{Timeline}
 **Gant chart thingy**
