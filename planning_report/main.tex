@@ -2,9 +2,14 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 \input{header}
+\usepackage{xspace} 
 
 \newcommand{\ballarrow}{\tikz[baseline=-0.6ex]{\draw[->] (0,0) -- (0.5,0); \filldraw (0.5,0) circle (2pt);}}
+\newcommand{\Na}{$Na^+$\xspace}
+\newcommand{\K}{$K^+$\xspace}
+\newcommand{\Ca}{$Ca^{2+}$\xspace}
 \hyphenpenalty=750
+
 
 \begin{document}
 \begin{titlepage}
@@ -114,15 +119,16 @@ hyper-synchrony in the basal ganglia \cite{west2022stimulating}.
 Neuroplasticity can be defined as "the ability of the nervous system to change its activity in
 response to intrinsic or extrinsic stimuli by reorganizing its structure, functions, or
 connections" \cite{mateos2019impact}.
-Plasticity occurs at different scales in the brain, ranging from molecular to neural networks.
+Plasticity occurs at different scales in the brain, ranging from molecular to neural networks. 
 The focus of this project is synaptic plasticity, which occurs between a pre-synaptic and a
 pos-synaptic neuron. While, the mechanisms of plasticity have been throughly studied **cite**,
 this understanding is just starting to find its way into clinical applications in
 neurorehabilitation (e.g. stroke, trauma, spinal cord injury \cite{cramer2011harnessing}) and
-neuroprostheses \cite{lebedev2017brain}.
-
+neuroprostheses \cite{lebedev2017brain}. \\
+**should mention STDP above** \\
+**OMG I'm cooked how tf did I miss \cite{hauptmann2009cumulative, hauptmann2010restoration}?!** \\
+**\textbf{coordinated reset (CR) stimulation}** \\
 **this should be relevant as well** \cite{schwab2020spike} \\
-**at this point i should introduce STDP**
 
 \subsection{Neuron-level vs. Mean-field models}
 Neuronal dynamics models are defined by defined by rules (ODEs) of how voltage in an unit changes
@@ -196,24 +202,35 @@ be connected to model a networks of neurons (e.g. \cite{terman2002activity}) and
 include plasticity rules \cite{borges2016effects}.
 
 \subsubsection{Rubin-Terman}
-\cite{terman2002activity} expanded on the HH model to create a subthalamopallido network of the
-basal ganglia, where GPe and STN neurons are modeled according following equation,
+\cite{terman2002activity} augumented the HH model to create a subthalamopallido network of the
+basal ganglia (RT model), where GPe and STN neurons are modeled according following equation,
 \begin{align}
-	C \dot u = - I_L - I_K - I_{Na} - I_T - I_{Ca} - I_{AHP} - I_{pre \rightarrow post}
+	C \dot u = - I_L - I_K - I_{Na} - I_T - I_{Ca} - I_{AHP} - I_{s \rightarrow d} -
+	I_{s \rightarrow s} + I_{app}
 \end{align}
-Where leak, $K^+$, $Na^+$ and high-threshold $Ca^+$ current \cite{song2000characterization}, are
+Where leak ($L$), \K, \Na and high-threshold \Ca currents \cite{song2000characterization}, are
 described in HH-like equations, and low threshold calcium current $I_T$ is different for GPe and
-STN neurons. $I_{AHP}$ represents calcium activated, voltage independent afterhyperpolarization
-(AHP) $K^+$ current. $I_{pre \rightarrow post}$ is synaptic current dependent on the nuclei
-the pre and post neurons belong to (either GPe or STN).
-
-**BG** \cite{terman2002activity, rubin2004high, rubin2012basal} \\
-**plasticity** \cite{madadi2022inhibitory}
+STN neurons. $I_{AHP}$ represents \Ca-activated, voltage-independent \textit{afterhyperpolarization}
+(AHP) $K^+$ current. $I_{s \rightarrow d}$ represents the inter-populational influence and is
+defined by
+$I_{s \rightarrow d} = \sum_{j} I_{ij}^{ds}$ where $s, d \in \{\text{GPe}, \text{STN}\}$.
+$I_{ij}^{ds}$ is the current from the presynaptic neuron $j$ in $s$ to the
+postsynaptic neuron $i$ in $d$, and is defined by
+$I_{ij}^{ds} = w_{ij}^{ds}s_{ij}^{ds}(t - \tau_{ds})(u_i - E_{ds})$ where $w_{ij}$ is the
+synaptic strength, $s_{ij}^{ds}$ is a synaptic variable and $\tau_{ds}$ is the transimission
+delay between $d$ and $s$.
+\cite{madadi2022inhibitory} expand on this model by adding inhibitory spike-timing-dependent
+plasticity to this network with $\Delta w = \eta(\exp(-|\Delta t| / \tau_w) - \alpha)$,
+where $\eta$ is the \textit{learning rate}, $\tau_w$ is the time constant of the plasticity
+rule exponential decay and $\alpha$ is the depression factor. \cite{rubin2012basal} expands
+the RT model into a CBGT model and analyzes ... \\
+**\cite{hauptmann2009cumulative, hauptmann2010restoration} $\rightarrow$ GPe-STN + plasticity +
+CR stimulation**
 
 % Population
 \subsubsection{Jansen}
-**plasticity** \cite{duchet2023mean} \\
-\cite{jansen1995electroencephalogram} \cite{west2022stimulating}
+**this should be brief** \cite{jansen1995electroencephalogram} \cite{west2022stimulating} \\
+**phase-dependent plasticity** \cite{duchet2023mean} \\
 
 
 \subsection{**Other ways of improving stimulation-based treatments**}
