@@ -66,12 +66,14 @@ a computational framework to investigate multi-site phase-locked stimulation in 
 spike-timing-dependent plasticity (STDP) rules, aiming to induce lasting desynchronization through activity-dependent
 synaptic reorganization.
 
-Methodologically, pathological and healthy network regimes will be established through data-driven tuning of spiking neuron models.
-Systematic simulations then evaluate multi-site phase-locked stimulation across four experimental axes:
+Methodologically, pathological and healthy network regimes will be established through data-driven tuning of spiking
+neuron models.
+Systematic simulations then evaluate multi-site phase-locked stimulation across three experimental axes:
 (1) STDP enabled/disabled in corticostriatal populations,
-(2) stimulation applied to different pairs of basal ganglia nuclei and cortical afferents,
-(3) closed-loop adaptation to thalamic oscillatory activity, and
-Network responses are quantified via phase-amplitude coupling, spectral power, and metastability analysis.
+(2) stimulation applied to different pairs of basal ganglia nuclei and cortical afferents, and
+(3) closed-loop adaptation to thalamic oscillatory activity.
+The network will then be analyzed in terms of inter-populational coupling and stability of potential non-pathological
+state with after stimulation.
 
 This work advances the field in two key directions:
 (1) integrates phase-locked stimulation with plasticity-targeted protocols, and
@@ -89,6 +91,8 @@ Parkinson's Disease (PD) is characterized by the loss of dopaminergic neurons an
 deficiency, which in turn leads to excessive synchronization in the basal ganglia.
 Hyper-synchrony is a hallmark of the PD \cite{hammond2007pathological, helmich2012cerebral},
 and thus, can be a promising therapeutic target.
+
+**add a CBGT diagram**
 
 \subsection{Deep brain stimulation: theory and practice}
 Tremor is primarly generated in the Cortical-Basal Ganglia-Thalamic (CBGT) network.
@@ -286,7 +290,7 @@ In contrast, spiking networks with STDP decouple the synchronization mechanism f
 preserving causal distinction between stimulation protocols and plasticity-driven reorganization.
 
 \subsection{Methodology}
-To achieve these objectives, the following steps will be implemented:
+To achieve these objectives, the following steps are outlined:
 \begin{enumerate}[nosep]
 	\item Implement STDP mechanisms within a spiking CBGT network model.
 	\item Tune pathological and healthy dynamical modes through data-driven parameter tuning, initially with plasticity disabled.
