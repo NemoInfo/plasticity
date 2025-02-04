@@ -106,15 +106,15 @@
 \setcounter{page}{1}
 
 \section{Introduction}
-\acrfull{pd} is characterized by pathological hypersynchrony in \acrfull{cbgt} circuit, driven by
+\acrfull{pd} is characterised by pathological hypersynchrony in \acrfull{cbgt} circuit, driven by
 dopaminergic degeneration in the \acrfull{snc}.
 \acrlong{dbs} of the \acrfull{stn} alleviates tremor by disrupting
 hypersynchrony in the \acrfull{bg}.
 However, the mechanism through which this happens remains not well understood, and therapeutic effects are transient,
 requiring continuous stimulation.
 The goal of this study is to propose a computational framework to investigate multi-site phase-locked stimulation in a
-spiking \acrshort{cbgt} network model with \acrfull{stdp} rules, aiming to induce lasting desynchronization
-through activity-dependent synaptic reorganization.
+spiking \acrshort{cbgt} network model with \acrfull{stdp} rules, aiming to induce lasting desynchronisation
+through activity-dependent synaptic reorganisation.
 
 Pathological and healthy network regimes will be established through data-driven tuning of spiking
 neuron models.
@@ -122,21 +122,21 @@ Systematic simulations then evaluate multi-site phase-locked stimulation across 
 (1) \acrshort{stdp} enabled/disabled in various \acrshort{cbgt} nuclei,
 (2) stimulation applied to different pairs of basal ganglia populations and cortical afferents, and
 (3) closed-loop adaptation to thalamic oscillatory activity.
-The network will then be analyzed in terms of the inter-populational coupling and the stability of potential
+The network will then be analysed in terms of the inter-populational coupling and the stability of potential
 stimulation-driven non-pathological states.
 
 This work advances the field in two key directions:
 (1) integrates phase-locked stimulation with plasticity-targeted protocols, and
 (2) evaluates stimulation targets across the \acrshort{cbgt} circuit focusing on regions with experimentally validated \acrshort{stdp}.
 Results will inform clinical adaptive stimulation protocols that exploit neuroplasticity for lasting symptom relief,
-while the methodology provides a generalizable computational framework for closed-loop neuromodulation design.
+while the methodology provides a generalisable computational framework for closed-loop neuromodulation design.
 
 \section{Background and literature review}
 
 \subsection{Parkinson's Disease}
-\acrshort{pd} is characterized by the loss of dopaminergic neurons and the presence of
+\acrshort{pd} is characterised by the loss of dopaminergic neurons and the presence of
 Lewy Bodies in the \acrshort{snc} \cite{del2018advances}. This dopaminergic depletion in the \acrshort{snc} leads to striatal dopamine
-deficiency, which in turn leads to excessive synchronization in the basal ganglia.
+deficiency, which in turn leads to excessive synchronisation in the basal ganglia.
 Hypersynchrony is a hallmark of the \acrshort{pd} \cite{hammond2007pathological, helmich2012cerebral},
 and thus, can be a promising therapeutic target.
 
@@ -192,7 +192,7 @@ adaptive therapies to address hypersynchrony in the \acrshort{bg}.
 
 \subsection{Plasticity to recover network states}
 Neuroplasticity can be defined as "the ability of the nervous system to change its activity in
-response to intrinsic or extrinsic stimuli by reorganizing its structure, functions, or
+response to intrinsic or extrinsic stimuli by reorganising its structure, functions, or
 connections" \cite{mateos2019impact}.
 Plasticity occurs at different scales in the brain, ranging from molecular to neural networks.
 The focus of this project is synaptic plasticity, which occurs between a pre-synaptic and a
@@ -212,7 +212,7 @@ To exploit \acrshort{stdp} in the \acrshort{cbgt}, \acrfull{crs} has been propos
 \acrshort{crs} delivers brief, phase-targeted electrical stimuli to specific neuronal subpopulations within interconnected
 neural circuits.
 \acrshort{crs} has been computationally modelled in a \acrfull{gpe}-\acrshort{stn} network to successfully disrupt pathological
-synchronization in the \acrshort{bg} \cite{hauptmann2009cumulative, hauptmann2010restoration}.
+synchronisation in the \acrshort{bg} \cite{hauptmann2009cumulative, hauptmann2010restoration}.
 
 \subsection{Modeling neural networks}
 Most neuronal dynamics models are defined by rules of how voltage in a unit changes
@@ -223,7 +223,7 @@ some common types of models, justifying the direction chosen for this project.
 
 \paragraph{Spiking neuron models} work by combining networks of units that individually
 simulate neuronal \acrlong{ap}s (\acrshort{ap}s).
-These networks can then be organized into different nuclei (e.g., \acrshort{stn}) and coerced to respect
+These networks can then be organised into different nuclei (e.g., \acrshort{stn}) and coerced to respect
 excitatory or inhibitory connections between nuclei.
 Within this class of models, different schemes for modelling neuronal dynamics exist,
 such as \acrfull{if} \cite{gerstner2014if} and Hodgkin-Huxley
@@ -318,7 +318,7 @@ basal ganglia (RT model), where \acrshort{gpe} and \acrshort{stn} neurons are mo
 \end{align}
 Where leak ($L$), \K, \Na and high-threshold \Ca currents \cite{song2000characterization}, are
 described in \acrshort{hh}-like equations, and low threshold calcium current $I_T$ is different for \acrshort{gpe} and
-\acrshort{stn} neurons. $I_{AHP}$ represents \Ca-activated, voltage-independent \textit{afterhyperpolarization}
+\acrshort{stn} neurons. $I_{AHP}$ represents \Ca-activated, voltage-independent \textit{afterhyperpolarisation}
 (AHP) $K^+$ current. $I_{s \rightarrow d}$ represents the inter-populational influence and is
 defined by
 $I_{s \rightarrow d} = \sum_{j} I_{ij}^{ds}$ where $s, d \in \{\text{\acrshort{gpe}}, \text{\acrshort{stn}}\}$.
@@ -348,7 +348,7 @@ rules would have to be phase-dependent, so they would introduce the same issue a
 \section{Project Plan}
 The primary objective of this project is to investigate multi-site phase-locked stimulation in a spiking \acrshort{cbgt} network
 model, with the goal of inducing plastic changes that transition pathological network dynamics of the \acrshort{bg} toward
-a healthy desynchronized state. This work will address two important gaps in the current literature:
+a healthy desynchronised state. This work will address two important gaps in the current literature:
 \begin{enumerate}[nosep]
 	\item Integrating phase-locked stimulation with plasticity-targeted protocols, closing the loop in coordinated
 	      reset paradigms.
@@ -362,8 +362,8 @@ Simulating phase-locked stimulation within systems governed by \textit{a priori}
 inherent circularity.
 Such coupling risks conflating stimulation mechanisms with network adaptation rules, effectively predetermining
 intervention outcomes without much dependence on physiological constraints.
-In contrast, spiking networks with \acrshort{stdp} decouple the synchronization mechanism from the phase-locked stimulation
-preserving the causal distinction between stimulation protocols and plasticity-driven reorganization.
+In contrast, spiking networks with \acrshort{stdp} decouple the synchronisation mechanism from the phase-locked stimulation
+preserving the causal distinction between stimulation protocols and plasticity-driven reorganisation.
 
 \subsection{Methodology}
 To achieve these objectives, the following steps are outlined:
@@ -376,7 +376,7 @@ To achieve these objectives, the following steps are outlined:
 		      \item Multi-site phase-locked stimulation applied to distinct \acrshort{bg} nuclei and cortical afferents
 	      \end{enumerate}
 	      Quantify network responses by analysing inter-nuclei coupling, and transitions between dynamical states.
-	\item Derive stimulation protocols optimized for plasticity-driven network desynchronisation.
+	\item Derive stimulation protocols optimised for plasticity-driven network desynchronisation.
 \end{enumerate}
 
 \subsection{Timeline}
@@ -400,13 +400,12 @@ To achieve these objectives, the following steps are outlined:
 \section*{Appendices}
 \addcontentsline{toc}{section}{Appendices}
 \renewcommand{\thesubsection}{\Alph{subsection}}
-\subsection{First appendix}
+\subsection{Research gap diagram}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figs/lit_diagram.pdf}
+	\caption{Visulaisation of the targeted research gap.}
+\end{figure}
 \subsection{Second appendix}
 
 \end{document}
-
-
-% CGBT model
-% Parkinson focus
-% adaptive stimulation
-% plasticity
