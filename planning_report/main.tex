@@ -2,10 +2,6 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 \input{header} 
-\usepackage{svg}
-\usepackage{subcaption}
-\usepackage{cleveref} 
-\usepackage{float} 
 
 \newcommand{\ballarrow}{\tikz[baseline=-0.6ex]{\draw[->] (0,0) -- (0.5,0); \filldraw (0.5,0) circle (2pt);}}
 \newcommand{\Na}{$Na^+$\xspace}
@@ -13,9 +9,9 @@
 \newcommand{\Ca}{$Ca^{2+}$\xspace}
 \hyphenpenalty=750
  
+% Acronym list
 \newcounter{acronymcount}
 \newcounter{currentacronym}
-
 \newcommand{\printacronymsinline}{%
   \noindent
   \setcounter{acronymcount}{0}%
