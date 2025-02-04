@@ -251,6 +251,7 @@ and connect these clusters with population-level connectivity rules. (e.g.,
 	\end{subfigure}
 	\caption{(a) Voltage trace of IF unit overtime in response to external current in (b). When the potential crosses
 		the AP threshold it is reset and the spike is recorded.}
+	\label{fig:if}
 \end{figure*}
 
 \acrshort{if} models treat action potentials as events.
@@ -281,6 +282,7 @@ nuclei both using an \acrshort{if} model.
 	\centering
 	\includesvg[height=1.4in]{figs/hhu}
 	\caption{Voltage trace of HH unit in response to external current pulses.}
+	\label{fig:hh}
 \end{figure*}
 
 The \acrfull{hh} model \cite{hodgkin1952measurement} simulates membrane potential by
@@ -406,6 +408,11 @@ To achieve these objectives, the following steps are outlined:
 	\includegraphics[width=0.6\textwidth]{figs/lit_diagram.pdf}
 	\caption{Visulaisation of the targeted research gap.}
 \end{figure}
-\subsection{Second appendix}
+
+\subsection{Report data}
+The code used to generate \cref{fig:if,fig:hh} along with all the figures used in this report, are uploaded on GitHub at
+\url{https://github.com/NemoInfo/NeuroModelSandbox} and \\
+\url{https://github.com/NemoInfo/plasticity}
+
 
 \end{document}
