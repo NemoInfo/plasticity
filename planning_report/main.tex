@@ -4,7 +4,8 @@
 \input{header} 
 \usepackage{svg}
 \usepackage{subcaption}
-\usepackage{cleveref}
+\usepackage{cleveref} 
+\usepackage{float} 
 
 \newcommand{\ballarrow}{\tikz[baseline=-0.6ex]{\draw[->] (0,0) -- (0.5,0); \filldraw (0.5,0) circle (2pt);}}
 \newcommand{\Na}{$Na^+$\xspace}
@@ -131,7 +132,6 @@ Results will inform clinical adaptive stimulation protocols that exploit neuropl
 while the methodology provides a generalizable computational framework for closed-loop neuromodulation design.
 
 \section{Background and literature review}
-**start this off nicely with a diagram of the research gap**
 
 \subsection{Parkinson's Disease}
 \acrshort{pd} is characterized by the loss of dopaminergic neurons and the presence of
@@ -140,7 +140,6 @@ deficiency, which in turn leads to excessive synchronization in the basal gangli
 Hypersynchrony is a hallmark of the \acrshort{pd} \cite{hammond2007pathological, helmich2012cerebral},
 and thus, can be a promising therapeutic target.
 
-**add a CBGT diagram**
 
 \subsection{Deep brain stimulation: theory and practice}
 It is believed tremor originates from excessive coupling in the \acrshort{cbgt} network.
@@ -169,6 +168,13 @@ plastic changes in the \acrshort{cbgt} circuit, closing the loop and coupling st
 patient symptoms (\acrfull{adbs}, \cite{beudel2018adaptive}), and phase-locking stimulation to
 rythmic activity in the \acrshort{cbgt} \cite{cagnan2017stimulating, west2022stimulating}.
 
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figs/cbgt_circuit.pdf}
+	\caption{\acrshort{cbgt} circuit in \acrshort{pd} pathology. Arrow connections represent majority excitatory (glutamate) connections,
+		ball arrows represent inhibitory (GABA) connections.}
+\end{figure}
+
 \subsection{Stimulating at the right time}
 The parkinsonian state results from the complex interplay between four pathways in the \acrshort{cbgt}
 the \textbf{hyperdirect} excitatory cortico-subthalamic pathway,
@@ -181,7 +187,7 @@ hypersynchrony in the basal ganglia \cite{west2022stimulating}.
 
 \cite{cagnan2017stimulating} demonstrated that phase-specific neuromodulation can disrupt pathological
 synchrony in essential tremor by delivering stimulation pulses locked to thalamic oscillatory phases.
-Strategies like this and others (e.g. \acrshort{adbs} \cite{beudel2018adaptive}) show the potential for closed-loop,
+Strategies like this and others (e.g., \acrshort{adbs} \cite{beudel2018adaptive}) show the potential for closed-loop,
 adaptive therapies to address hypersynchrony in the \acrshort{bg}.
 
 \subsection{Plasticity to recover network states}
@@ -191,7 +197,7 @@ connections" \cite{mateos2019impact}.
 Plasticity occurs at different scales in the brain, ranging from molecular to neural networks.
 The focus of this project is synaptic plasticity, which occurs between a pre-synaptic and a
 post-synaptic neuron. The mechanisms of plasticity have been thoroughly studied **cite**, and
-are starting to find their way into clinical applications in neurorehabilitation (e.g. stroke, trauma,
+are starting to find their way into clinical applications in neurorehabilitation (e.g., stroke, trauma,
 spinal cord injury \cite{cramer2011harnessing}) and neuroprostheses \cite{lebedev2017brain}.
 
 The potential of plasticity-based treatments in \acrshort{pd} depends on the existence of
@@ -217,14 +223,14 @@ some common types of models, justifying the direction chosen for this project.
 
 \paragraph{Spiking neuron models} work by combining networks of units that individually
 simulate neuronal \acrlong{ap}s (\acrshort{ap}s).
-These networks can then be organized into different nuclei (e.g. \acrshort{stn}) and coerced to respect
+These networks can then be organized into different nuclei (e.g., \acrshort{stn}) and coerced to respect
 excitatory or inhibitory connections between nuclei.
 Within this class of models, different schemes for modelling neuronal dynamics exist,
 such as \acrfull{if} \cite{gerstner2014if} and Hodgkin-Huxley
 \cite{hodgkin1952measurement, gerstner2014hh}.
 
 \paragraph{Mean-field models} simulate the \acrlong{lfp}s (\acrshort{lfp}s) of clusters of neurons
-and connect these clusters with population-level connectivity rules. (e.g.
+and connect these clusters with population-level connectivity rules. (e.g.,
 \cite{jansen1995electroencephalogram, west2022stimulating})
 
 % Neuron-level
@@ -300,7 +306,7 @@ Where $m$, $h$ and $n$ are open probabilities for subunints of $Na$ or $K$ chann
 	\dot x = - \frac 1 {\tau_m(u)}[x - x_0(u)], &  & x \in \{m, h, n\}.
 \end{align}
 As in the \acrshort{if} model, these rules describe the dynamics of a single unit, which can subsequently
-be connected to model a network of neurons (e.g. \cite{terman2002activity}) and augmented to
+be connected to model a network of neurons (e.g., \cite{terman2002activity}) and augmented to
 include plasticity rules \cite{borges2016effects}.
 
 \subsubsection{Rubin-Terman}
@@ -398,3 +404,9 @@ To achieve these objectives, the following steps are outlined:
 \subsection{Second appendix}
 
 \end{document}
+
+
+% CGBT model
+% Parkinson focus
+% adaptive stimulation
+% plasticity
