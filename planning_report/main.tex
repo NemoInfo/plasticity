@@ -40,6 +40,7 @@
 \newacronym{bg}{BG}{Basal ganglia} 
 \newacronym{stdp}{STDP}{spike-timing-dependent plasticity}
 \newacronym{gpe}{GPe}{Globus pallidus pars externa}
+\newacronym{gpi}{GPi}{Globus pallidus pars interna}
 \newacronym{crs}{CRS}{Coordinated reset stimulation}
 \newacronym{ap}{AP}{action potential}
 \newacronym{if}{IF}{Integrate-And-Fire}
@@ -104,20 +105,20 @@
 \section{Introduction}
 \acrfull{pd} is characterised by pathological hypersynchrony in the \acrfull{cbgt} circuit, driven by
 dopaminergic degeneration in the \acrfull{snc}.
-\acrlong{dbs} of the \acrfull{stn} alleviates tremor by disrupting
-hypersynchrony in the \acrfull{bg}.
-However, the mechanism through which this happens remains not well understood, and therapeutic effects are transient,
-requiring continuous stimulation.
+Advanced \acrshort{pd} is traditionally treated with \acrfull{dbs} of a single node in the \acrshort{cbgt} selected depending
+on the symptom being treated.
+The mechanism through which this happens remains not well understood, and therapeutic effects are transient,
+requiring continuous stimulation which produces acute effects.
 The goal of this study is to propose a computational framework to investigate multi-site phase-locked stimulation in a
 spiking model of the \acrshort{cbgt} network with \acrfull{stdp} rules, aiming to induce lasting desynchronisation
 through activity-dependent synaptic reorganisation.
 
 Pathological and healthy network regimes will be established through data-driven tuning of spiking
 neuron models.
-Systematic simulations then evaluate multi-site phase-locked stimulation across three experimental axes:
-(1) \acrshort{stdp} enabled/disabled in various \acrshort{cbgt} nuclei,
-(2) stimulation applied to different pairs of basal ganglia populations and cortical afferents, and
-(3) closed-loop adaptation to thalamic oscillatory activity.
+Systematic simulations will evaluate multi-site phase-locked stimulation across three experimental axes:
+(1) selectively enabling \acrshort{stdp} at different \acrshort{cbgt} nodes across simulations,
+(2) applying rhythmic stimulation to various node pairs, and
+(3) using different nodes to provide phase for closed-loop stimulation.
 The network will then be analysed in terms of the inter-populational coupling and the stability of potential
 stimulation-driven non-pathological states.
 
@@ -130,6 +131,11 @@ while the methodology provides a generalisable computational framework for close
 \section{Background and literature review}
 
 \subsection{Parkinson's Disease}
+\acrshort{pd} is a progressive, fluctuating motor disorder that affects 571 per 100,000 people over the age of 50 worlwide
+\cite{pringsheim2014prevalence}.
+The most common motor symptoms of \acrshort{pd} are tremor, rigidity and bradykinesia (slowness of movement). These symptoms affect most
+daily activities (e.g, talking, eating, walking), and have a major effect on quality of life.
+
 \acrshort{pd} is characterised by the loss of dopaminergic neurons and the presence of
 Lewy Bodies in the \acrshort{snc} \cite{del2018advances}. This dopaminergic depletion in the \acrshort{snc} leads to striatal dopamine
 deficiency, which in turn leads to excessive synchronisation in the basal ganglia.
@@ -138,14 +144,14 @@ and thus, can be a promising therapeutic target.
 
 
 \subsection{Deep brain stimulation: theory and practice}
-It is believed tremor originates from excessive coupling in the \acrshort{cbgt} network.
+It is believed PD motor symptoms originate from excessive coupling in the \acrshort{cbgt} network.
 Thus, \acrshort{dbs} in this region emerged as an effective tool in treating advanced \acrshort{pd} and Essential tremor
 patients \cite{del2018advances}.
-\acrshort{dbs} works by delivering high-frequency stimulation in regions of the \acrshort{cbgt}
+\acrshort{dbs} works by delivering high-frequency stimulation in specific regions of the \acrshort{cbgt}
 through implanted electrodes.
 A prominent theory for this method's success is that it enables stimulation-driven
 decorrelation of the different \acrshort{bg} nuclei, shifting it to a non-pathological state.
-There is significant evidence that performing \acrshort{dbs} in the \acrshort{stn} or the GPi can have significant improvements in
+There is significant evidence that performing \acrshort{dbs} in the \acrfull{stn} or the \acrfull{gpi} can have significant improvements in
 quality of life in patients, reducing tremor and restoring motor control
 \cite{rodriguez2005bilateral, rubin2004high}.
 
@@ -157,7 +163,7 @@ Finally, the mechanism through which \acrshort{dbs} reduces tremors is not fully
 For instance, there is a discrepancy in tremor frequency ($\sim$ 20 Hz on average) and the effective frequency range of
 traditional \acrshort{dbs} of 130-180 Hz.
 
-Therefore, several areas of research emerge in improving stimulation-based treatments of \acrshort{pd}:
+Therefore, several areas of research have emerged to improve stimulation-based treatments of \acrshort{pd}:
 finding non-invasive alternatives \cite{saturnino2017target, schwab2020spike}, eliciting lasting,
 plastic changes in the \acrshort{cbgt} circuit, closing the loop and coupling stimulation to the presence of
 patient symptoms (\acrfull{adbs}, \cite{beudel2018adaptive}), and phase-locking stimulation to
@@ -165,7 +171,7 @@ rythmic activity in the \acrshort{cbgt} \cite{cagnan2017stimulating, west2022sti
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.6\textwidth]{figs/cbgt_circuit.pdf}
+	\includegraphics[height=2.4in]{figs/cbgt_circuit.pdf}
 	\caption{\acrshort{cbgt} circuit in \acrshort{pd} pathology. Arrow connections represent majority excitatory (glutamate) connections,
 		ball arrows represent inhibitory (GABA) connections.}
 \end{figure}
@@ -210,7 +216,7 @@ neural circuits.
 synchronisation in the \acrshort{bg} \cite{hauptmann2009cumulative, hauptmann2010restoration}.
 
 \subsection{Modeling neural networks}
-Most neuronal dynamics models are defined by rules of how voltage in a unit changes
+Most neuronal models are defined by rules of how voltage in a unit changes
 over time in response to voltage in the network and external current (e.g., noise, stimulation
 current).
 This raises the question: what is a unit? From this two broad categories emerge: A unit can be an individual neuron or a cluster of neurons. This section introduces
@@ -241,7 +247,7 @@ and connect these clusters with population-level connectivity rules. (e.g.,
 		\label{fig:rc}
 		\vspace{3mm}
 		\hspace{4mm}
-		\includegraphics[height=1.4in]{figs/parallel_rc}
+		\includegraphics[height=1.2in]{figs/parallel_rc}
 	\end{subfigure}
 	~
 	\begin{subfigure}[t]{0.45\textwidth}
@@ -249,14 +255,14 @@ and connect these clusters with population-level connectivity rules. (e.g.,
 		\begin{subfigure}[t]{0.8\textwidth}
 			\caption{}
 			\label{fig:ifu}
-			\hspace{-10mm}
-			\includesvg[height=1.4in]{figs/ifu}
+			\hspace{-5mm}
+			\includesvg[height=1.2in]{figs/ifu}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.8\textwidth}
 			\caption{}
-			\hspace{-10mm}
-			\includesvg[height=1.4in]{figs/ifi}
+			\hspace{-5mm}
+			\includesvg[height=1.2in]{figs/ifi}
 			\label{fig:ifi}
 		\end{subfigure}
 	\end{subfigure}
@@ -282,8 +288,8 @@ Where $u$ is the membrane voltage, $u_{rest}$ is the resting potential, $u_r$ is
 potential, $\tau_m = RC$ is the time constant, and $I$ is external current.
 
 These equations describe the update rules in a single unit. Connectivity rules between units
-can be added to form neural networks. These connections can then be strengthened or weakened
-depending on spike timings between units, modelling \acrshort{stdp}. \cite{shupe2021integrate} simulate
+can be added to form neural networks. To model \acrshort{stdp}, connections can be strengthened or weakened
+depending on spike timings between units. \cite{shupe2021integrate} simulate
 plasticity in cortical columns; \cite{kromer2023synaptic} model plasticity between basal ganglia
 nuclei both using an \acrshort{if} model.
 
@@ -342,7 +348,7 @@ basal ganglia (RT model), where \acrshort{gpe} and \acrshort{stn} neurons are mo
 	I_{s \rightarrow s} + I_{app}
 \end{align}
 Where leak ($L$), \K, \Na and high-threshold \Ca currents \cite{song2000characterization}, are
-described in \acrshort{hh}-like equations, and low threshold calcium current $I_T$ is different for \acrshort{gpe} and
+described in \acrshort{hh}-like equations. Low threshold calcium current $I_T$ is parameterised differently for \acrshort{gpe} and
 \acrshort{stn} neurons. $I_{AHP}$ represents \Ca-activated, voltage-independent \textit{afterhyperpolarisation}
 (AHP) $K^+$ current. $I_{s \rightarrow d}$ represents the inter-populational influence and is
 defined by
@@ -375,8 +381,7 @@ The primary objective of this project is to investigate multi-site phase-locked 
 model, with the goal of inducing plastic changes that transition pathological network dynamics of the \acrshort{bg} toward
 a healthy desynchronised state. This work will address two important gaps in the current literature (\cref{fig:gap}):
 \begin{enumerate}[nosep]
-	\item Integrating phase-locked stimulation with plasticity-targeted protocols, closing the loop in coordinated
-	      reset paradigms.
+	\item Closing the loop in plasticity-targeted protocols by integrating them with phase-locked stimulation.
 	\item Systematically evaluating stimulation targets across the wider \acrshort{cbgt} network, with emphasis on regions with
 	      experimentally validated synaptic plasticity (e.g., corticostriatal connections) while accounting for
 	      uncertainties in plasticity mechanisms at other nodes like the \acrshort{stn}.
