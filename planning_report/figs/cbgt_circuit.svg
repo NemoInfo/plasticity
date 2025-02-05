@@ -25,14 +25,15 @@
      inkscape:deskcolor="#505050"
      inkscape:document-units="mm"
      inkscape:zoom="0.5"
-     inkscape:cx="504"
-     inkscape:cy="643"
+     inkscape:cx="594"
+     inkscape:cy="403"
      inkscape:window-width="1920"
      inkscape:window-height="1045"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer1"
+     showgrid="false" />
   <defs
      id="defs1">
     <marker
@@ -428,7 +429,7 @@
          y="216.62099"
          id="tspan5-4">STN</tspan></text>
     <path
-       style="fill:#ff0000;fill-opacity:1;stroke:#f55666;stroke-width:3.5;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker10);marker-mid:url(#Tail);paint-order:fill markers stroke"
+       style="fill:#ff6e61;fill-opacity:1;stroke:#f55666;stroke-width:3.5;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker10);marker-mid:url(#Tail);paint-order:fill markers stroke;opacity:1"
        d="M 61.030621,216.8538 H 177.60853"
        id="path8-7"
        sodipodi:nodetypes="cc" />
@@ -524,7 +525,7 @@
        id="path8-7-7-8"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;fill-opacity:1;stroke:#4000ff;stroke-width:1.5;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker12)"
+       style="fill:none;fill-opacity:1;stroke:#4b6abe;stroke-width:1.5;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker12);opacity:1"
        d="m 199.74773,48.955045 c 0,21.46764 -46.8947,14.05204 -91.49564,14.05204 -82.256389,0 -83.252089,63.600005 -83.252089,129.519065"
        id="path7-7-1"
        sodipodi:nodetypes="csc" />

@@ -86,7 +86,7 @@
 	%----------------------------------------------------------------------------------------
 
 	\vfill
-	{Word Count: 1911}\\[0.4cm]
+	{Word Count: 2018}\\[0.4cm]
 	{\large \today}\\[0.8cm]
 \end{titlepage}
 %----------------------------------------------------------------------------------------
@@ -102,14 +102,14 @@
 \setcounter{page}{1}
 
 \section{Introduction}
-\acrfull{pd} is characterised by pathological hypersynchrony in \acrfull{cbgt} circuit, driven by
+\acrfull{pd} is characterised by pathological hypersynchrony in the \acrfull{cbgt} circuit, driven by
 dopaminergic degeneration in the \acrfull{snc}.
 \acrlong{dbs} of the \acrfull{stn} alleviates tremor by disrupting
 hypersynchrony in the \acrfull{bg}.
 However, the mechanism through which this happens remains not well understood, and therapeutic effects are transient,
 requiring continuous stimulation.
 The goal of this study is to propose a computational framework to investigate multi-site phase-locked stimulation in a
-spiking \acrshort{cbgt} network model with \acrfull{stdp} rules, aiming to induce lasting desynchronisation
+spiking model of the \acrshort{cbgt} network with \acrfull{stdp} rules, aiming to induce lasting desynchronisation
 through activity-dependent synaptic reorganisation.
 
 Pathological and healthy network regimes will be established through data-driven tuning of spiking
@@ -150,10 +150,9 @@ quality of life in patients, reducing tremor and restoring motor control
 \cite{rodriguez2005bilateral, rubin2004high}.
 
 However, \acrshort{dbs} does have significant limitations. Firstly, like any highly invasive procedure, the implantation procedure has many risks.
-Advances in electrode technology and surgical techniques have reduced some of these risks *cite*.
+Advances in electrode technology and surgical techniques have reduced some of these risks.
 Secondly, patient symptoms are only ameliorated while the stimulation is on. This means that
-the device needs to be on continuously, which can induce numerous side effects in patients
-**citeee** and also creates the need for a continuous power supply.
+the device needs to be on continuously, which can induce numerous side effects in patients and also creates the need for a continuous power supply.
 Finally, the mechanism through which \acrshort{dbs} reduces tremors is not fully understood yet.
 For instance, there is a discrepancy in tremor frequency ($\sim$ 20 Hz on average) and the effective frequency range of
 traditional \acrshort{dbs} of 130-180 Hz.
@@ -192,7 +191,7 @@ response to intrinsic or extrinsic stimuli by reorganising its structure, functi
 connections" \cite{mateos2019impact}.
 Plasticity occurs at different scales in the brain, ranging from molecular to neural networks.
 The focus of this project is synaptic plasticity, which occurs between a pre-synaptic and a
-post-synaptic neuron. The mechanisms of plasticity have been thoroughly studied **cite**, and
+post-synaptic neuron. The mechanisms of plasticity have been thoroughly studied, and
 are starting to find their way into clinical applications in neurorehabilitation (e.g., stroke, trauma,
 spinal cord injury \cite{cramer2011harnessing}) and neuroprostheses \cite{lebedev2017brain}.
 
@@ -233,19 +232,35 @@ and connect these clusters with population-level connectivity rules. (e.g.,
 \subsubsection{Integrate-And-Fire}
 \begin{figure*}[ht]
 	\centering
-	\begin{subfigure}[t]{0.48\textwidth}
+	\hspace{-10mm}
+	\begin{subfigure}[t]{0.45\textwidth}
 		\centering
+		\vspace{14mm}
+		\hspace{-4mm}
 		\caption{}
-		\includesvg[height=1.4in]{figs/ifu}
-		\label{fig:ifu}
+		\label{fig:rc}
+		\vspace{3mm}
+		\hspace{4mm}
+		\includegraphics[height=1.4in]{figs/parallel_rc}
 	\end{subfigure}
 	~
-	\begin{subfigure}[t]{0.48\textwidth}
+	\begin{subfigure}[t]{0.45\textwidth}
 		\centering
-		\caption{}
-		\includesvg[height=1.4in]{figs/ifi}
+		\begin{subfigure}[t]{0.8\textwidth}
+			\caption{}
+			\label{fig:ifu}
+			\hspace{-10mm}
+			\includesvg[height=1.4in]{figs/ifu}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.8\textwidth}
+			\caption{}
+			\hspace{-10mm}
+			\includesvg[height=1.4in]{figs/ifi}
+			\label{fig:ifi}
+		\end{subfigure}
 	\end{subfigure}
-	\caption{(a) Voltage trace of IF unit overtime in response to external current in (b). When the potential crosses
+	\caption{Simple IF neuron. (a) Parallel RC circuit. (b) Voltage trace of IF unit overtime in response to external current in (c). When the potential crosses
 		the AP threshold it is reset and the spike is recorded.}
 	\label{fig:if}
 \end{figure*}
@@ -276,8 +291,20 @@ nuclei both using an \acrshort{if} model.
 
 \begin{figure*}[ht]
 	\centering
-	\includesvg[height=1.4in]{figs/hhu}
-	\caption{Voltage trace of HH unit in response to external current pulses.}
+	\begin{subfigure}[t]{0.45\textwidth}
+		\caption{}
+		\hspace{-5mm}
+		\includegraphics[height=1.2in]{figs/hh_circuit}
+		\label{fig:hhcirc}
+	\end{subfigure}
+	~
+	\begin{subfigure}[t]{0.45\textwidth}
+		\caption{}
+		\hspace{8mm}
+		\includesvg[height=1.2in]{figs/hhu}
+		\label{fig:hhu}
+	\end{subfigure}
+	\caption{(a) HH model equivalent electrical circuit. (b) Voltage trace of HH neuron in response to external current pulses.}
 	\label{fig:hh}
 \end{figure*}
 
@@ -286,7 +313,7 @@ considering the dynamics of different ion conductances.
 Each ion has a reversal potential at which the force of the electrical and chemical gradients
 across the membrane even out.
 These can be modeled in an electrical circuit as a battery and the total channels of a
-particular ion can be modeled as a resistor. Each modelled ion has a parallel branch in the
+particular ion can be modeled as a resistor (\cref{fig:hhcirc}). Each modelled ion has a parallel branch in the
 corresponding electrical circuit. The following equations adapted from \cite{gerstner2014hh}
 describe the \acrshort{hh} model:
 \begin{align}
@@ -346,7 +373,7 @@ rules would have to be phase-dependent, so they would introduce the same issue a
 \section{Project Plan}
 The primary objective of this project is to investigate multi-site phase-locked stimulation in a spiking \acrshort{cbgt} network
 model, with the goal of inducing plastic changes that transition pathological network dynamics of the \acrshort{bg} toward
-a healthy desynchronised state. This work will address two important gaps in the current literature:
+a healthy desynchronised state. This work will address two important gaps in the current literature (\cref{fig:gap}):
 \begin{enumerate}[nosep]
 	\item Integrating phase-locked stimulation with plasticity-targeted protocols, closing the loop in coordinated
 	      reset paradigms.
@@ -378,7 +405,11 @@ To achieve these objectives, the following steps are outlined:
 \end{enumerate}
 
 \subsection{Timeline}
-**Gant chart thingy**
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/gant_chart.pdf}
+	\caption{Project timeline. Numbers 1 through 4 correspond to the steps in the methodology.}
+\end{figure}
 
 
 %**********************************************%
@@ -403,12 +434,12 @@ To achieve these objectives, the following steps are outlined:
 	\centering
 	\includegraphics[width=0.6\textwidth]{figs/lit_diagram.pdf}
 	\caption{Visulaisation of the targeted research gap.}
+	\label{fig:gap}
 \end{figure}
 
 \subsection{Report data}
-The code used to generate \cref{fig:if,fig:hh} along with all the figures used in this report, are uploaded on GitHub at
-\url{https://github.com/NemoInfo/NeuroModelSandbox} and \\
-\url{https://github.com/NemoInfo/plasticity}
+The code used to generate \cref{fig:if,fig:hh} along with the raw figures used in this report, are available at
+\url{github.com/NemoInfo/NeuroModelSandbox} and \url{github.com/NemoInfo/plasticity}
 
 
 \end{document}
