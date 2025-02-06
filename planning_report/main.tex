@@ -2,7 +2,7 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 \input{header} 
-
+ 
 \newcommand{\ballarrow}{\tikz[baseline=-0.6ex]{\draw[->] (0,0) -- (0.5,0); \filldraw (0.5,0) circle (2pt);}}
 \newcommand{\Na}{$Na^+$\xspace}
 \newcommand{\K}{$K^+$\xspace}
@@ -58,7 +58,7 @@
 
 	\begin{flushleft} \large
 		\begin{minipage}{0.4\textwidth}
-			\includegraphics[scale=0.14]{imperial.png}
+			\includegraphics[scale=0.14]{figs/imperial.png}
 		\end{minipage}
 	\end{flushleft}
 	\vspace{4cm}
@@ -87,7 +87,7 @@
 	%----------------------------------------------------------------------------------------
 
 	\vfill
-	{Word Count: 2089}\\[0.4cm]
+	{Word Count: 2085}\\[0.4cm]
 	{\large \today}\\[0.8cm]
 \end{titlepage}
 %----------------------------------------------------------------------------------------
@@ -131,10 +131,10 @@ while the methodology provides a generalisable computational framework for close
 \section{Background and literature review}
 
 \subsection{Parkinson's Disease}
-\acrshort{pd} is a progressive, fluctuating motor disorder that affects 571 per 100,000 people over the age of 50 worlwide
+\acrshort{pd} is a progressive, fluctuating motor disorder that affects 571 per 100,000 people over the age of 50 worldwide
 \cite{pringsheim2014prevalence}.
 The most common motor symptoms of \acrshort{pd} are tremor, rigidity and bradykinesia (slowness of movement). These symptoms affect most
-daily activities (e.g, talking, eating, walking), and have a major effect on quality of life.
+daily activities (e.g., talking, eating, walking), and have a major effect on quality of life.
 
 \acrshort{pd} is characterised by the loss of dopaminergic neurons and the presence of
 Lewy Bodies in the \acrshort{snc} \cite{del2018advances}. This dopaminergic depletion in the \acrshort{snc} leads to striatal dopamine
@@ -266,7 +266,7 @@ and connect these clusters with population-level connectivity rules. (e.g.,
 			\label{fig:ifi}
 		\end{subfigure}
 	\end{subfigure}
-	\caption{Simple IF neuron. (a) Parallel RC circuit. (b) Voltage trace of IF unit overtime in response to external current in (c). When the potential crosses
+	\caption{Simple IF neuron. (a) Parallel RC circuit. (b) Voltage trace of IF unit over time in response to external current in (c). When the potential crosses
 		the AP threshold it is reset and the spike is recorded.}
 	\label{fig:if}
 \end{figure*}
@@ -274,7 +274,7 @@ and connect these clusters with population-level connectivity rules. (e.g.,
 \acrshort{if} models treat action potentials as events.
 This reduction is justified by the fact that the shape of \acrshort{ap}s is always \textit{approximately}
 the same, meaning they \textit{cannot} convey information. \cite{gerstner2014if} describe a leaky \acrshort{if} model
-is represented by an electrical circuit with a resistor($R$) and a capacitor($C$) in parallel
+represented by an electrical circuit with a resistor ($R$) and a capacitor ($C$) in parallel
 ($I(t) = I_R + I_C$), combined with a reset condition when the potential exceeds a threshold
 $\theta$ (\cref{fig:ifu}).
 This can be modelled by,
@@ -289,9 +289,9 @@ potential, $\tau_m = RC$ is the time constant, and $I$ is external current.
 
 These equations describe the update rules in a single unit. Connectivity rules between units
 can be added to form neural networks. To model \acrshort{stdp}, connections can be strengthened or weakened
-depending on spike timings between units. \cite{shupe2021integrate} simulate
-plasticity in cortical columns; \cite{kromer2023synaptic} model plasticity between basal ganglia
-nuclei both using an \acrshort{if} model.
+depending on spike timings between units. For instance, \cite{shupe2021integrate} simulate
+plasticity in cortical columns, and \cite{kromer2023synaptic} model plasticity between basal ganglia
+nuclei using \acrshort{if} models.
 
 \subsubsection{Hodgkin-Huxley}
 
@@ -318,23 +318,23 @@ The \acrfull{hh} model \cite{hodgkin1952measurement} simulates membrane potentia
 considering the dynamics of different ion conductances.
 Each ion has a reversal potential at which the force of the electrical and chemical gradients
 across the membrane even out.
-These can be modeled in an electrical circuit as a battery and the total channels of a
-particular ion can be modeled as a resistor (\cref{fig:hhcirc}). Each modelled ion has a parallel branch in the
+These can be modelled in an electrical circuit as a battery and the total channels of a
+particular ion can be modelled as a resistor (\cref{fig:hhcirc}). Each modelled ion has a parallel branch in the
 corresponding electrical circuit. The following equations adapted from \cite{gerstner2014hh}
 describe the \acrshort{hh} model:
 \begin{align}
 	I(t) & = I_C(t) + \sum_k I_k(t),
 	\intertext{Where the current of each ion $k$ can be described in terms of the open probability
-		of a $k$ channel, $p_k$ and the maximum conductance when all $k$ channels are open, $g_k$:}
+		of a $k$ channel ($p_k$) and the maximum conductance when all channels of ion $k$ are open ($g_k$):}
 	I_k  & = g_k p_k(u - E_k).
 \end{align}
-In particular Hodgkin and Huxley modeled $Na^+$, $K^+$ and a leak $L$ currents:
+In particular Hodgkin and Huxley modeled \Na, \K and a leak ($L$) currents:
 \begin{align}
 	C \dot u = g_{Na}m^3h(E_{Na} - u) + g_K n^4(E_K - u) + g_L (E_L - u),
 \end{align}
 Where $m$, $h$ and $n$ are open probabilities for subunints of $Na$ or $K$ channels governed by:
 \begin{align}
-	\dot x = - \frac 1 {\tau_m(u)}[x - x_0(u)], &  & x \in \{m, h, n\}.
+	\dot x = - \frac 1 {\tau_m(u)}[x - x_0(u)] &  & ,\text{for all } x \in \{m, h, n\}.
 \end{align}
 As in the \acrshort{if} model, these rules describe the dynamics of a single unit, which can subsequently
 be connected to model a network of neurons (e.g., \cite{terman2002activity}) and augmented to
@@ -342,7 +342,7 @@ include plasticity rules \cite{borges2016effects}.
 
 \subsubsection{Rubin-Terman}
 \cite{terman2002activity} augmented the \acrshort{hh} model to create a subthalamopallido network of the
-basal ganglia (RT model), where \acrshort{gpe} and \acrshort{stn} neurons are modelled according to the following equation,
+basal ganglia, where \acrshort{gpe} and \acrshort{stn} neurons are modelled according to the following equation:
 \begin{align}
 	C \dot u = - I_L - I_K - I_{Na} - I_T - I_{Ca} - I_{AHP} - I_{s \rightarrow d} -
 	I_{s \rightarrow s} + I_{app}
@@ -355,7 +355,7 @@ defined by
 $I_{s \rightarrow d} = \sum_{j} I_{ij}^{ds}$ where $s, d \in \{\text{\acrshort{gpe}}, \text{\acrshort{stn}}\}$.
 $I_{ij}^{ds}$ is the current from the presynaptic neuron $j$ in $s$ to the
 postsynaptic neuron $i$ in $d$, and is defined by
-$I_{ij}^{ds} = w_{ij}^{ds}s_{ij}^{ds}(t - \tau_{ds})(u_i - E_{ds})$ where $w_{ij}$ is the
+$I_{ij}^{ds} = w_{ij}^{ds}s_{ij}^{ds}(t - \tau_{ds})(u_i - E_{ds})$ where $w_{ij}^{ds}$ is the
 synaptic strength, $s_{ij}^{ds}$ is a synaptic variable and $\tau_{ds}$ is the transmission
 delay between $d$ and $s$.
 \cite{madadi2022inhibitory} expand on this model by adding inhibitory spike-timing-dependent
@@ -438,7 +438,7 @@ To achieve these objectives, the following steps are outlined:
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figs/lit_diagram.pdf}
-	\caption{Visulaisation of the targeted research gap.} 
+	\caption{Visulaisation of the targeted research gap.}
 	\label{fig:gap}
 \end{figure}
 
